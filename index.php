@@ -28,5 +28,7 @@ echo "<br>";
 echo "Perkenalkan, nama saya " . $nama . ", siswa kelas " . $kelas . " jurusan " . $jurusan . ", saya bersekolah di " . $sekolah .  "<br>" . "Hobi saya adalah " . $hobi . "<br><br>";
 
 // 4. Gabung string tanpa menggunakan titik
-echo "Perkenalkan, nama saya $nama, siswa kelas $kelas jurusan $jurusan, saya bersekolah di $sekolah <br> Hobi saya adalah $hobi"
+echo "Perkenalkan, nama saya $nama, siswa kelas $kelas jurusan $jurusan, saya bersekolah di $sekolah <br> Hobi saya adalah $hobi";
+
+
 ?>
