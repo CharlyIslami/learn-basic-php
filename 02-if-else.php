@@ -111,10 +111,10 @@ echo "Untuk nilai rata-rata yang didapat sang anak: " . round($nilai_total, 2) .
 if ($lulus_count == 3) {
     if ($nilai_total >= 90) {
         echo "LULUS dengan predikat <b>ISTIMEWA</b>";
-    }else {
+    } else {
         "LULUS";
     }
-}else {
+}   else {
     if ($lulus_count == 2) {
         echo "LULUS BERSYARAT";
     }elseif ($lulus_count == 1) {
