@@ -26,7 +26,7 @@ if ($nilai >= 75 && $tunggakan_spp == false) {
     echo "<b>TIDAK BOLEH ikut study tour</b>";
 
     //kasih tahu alasannya kenapa
-    if(nilai < 75) {
+    if ($nilai < 75) {
         echo "Alasan: Nilai kurang dari 75<br>";
     }
     if ($tunggakan_spp == true) {
@@ -35,4 +35,6 @@ if ($nilai >= 75 && $tunggakan_spp == false) {
 }
 
 echo "<hr><br>";
+
+
 ?>
