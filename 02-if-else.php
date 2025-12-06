@@ -17,7 +17,7 @@ if ($uang >= $harga) {
     $akhir = $uang - $harga;
     echo "<br><br>Transaksi berhasil! kamu bisa membeli nasi goreng.";
     echo "<br><br> Uang kamu sekarang tersisa Rp " . number_format($akhir) . ".";
-}else {
+} else {
     $kurang = $harga - $uang;
     echo "<br><br>Maaf, uang kamu kurang Rp " . number_format($kurang) . " untuk membeli nasi goreng.";
 }
@@ -36,13 +36,13 @@ echo "Nilai matematika yang didapat: <b>$nilai</b>.<br><br>";
 //Eksekusi kode 
 if ($nilai >= 90) {
     echo " Sang anak mendapatkan predikat A (Sangat Baik)";
-}elseif ($nilai >= 80) {
+} elseif ($nilai >= 80) {
     echo " Sang anak mendapatkan predikat B (Baik)";
-}elseif ($nilai >= 70) {
+} elseif ($nilai >= 70) {
     echo " Sang anak mendapatkan predikat C (Cukup)";
-}elseif ($nilai >= 60) {
+} elseif ($nilai >= 60) {
     echo " Sang anak mendapatkan predikat D (Kurang)";
-}else {
+} else {
     echo " Sang anak mendapatkan predikat E (Tidak Lulus)";
 }
 
@@ -62,16 +62,15 @@ $diskon = 0;
 $status_member = $punya_member ? "Ya" : "Tidak";
 
 //eksekusi kode
-if ($punya_member) {   
+if ($punya_member) {
     if ($harga_laptop >= 10000000) {
         $diskon = 0.15;
-    }else {
+    } else {
         $diskon = 0.10;
     }
+} else {
+    $diskon = 0;
 }
-    else {
-       $diskon = 0;
-    }
 
 //Hitung total harga setelah diskon
 $total = $harga_laptop - ($harga_laptop * $diskon);
@@ -95,9 +94,12 @@ $nilai_total = ($teori + $praktik + $sikap) / 3;
 //Variabel tambahan
 $lulus_count = 0;
 
-if ($teori >= 70) $lulus_count++;
-if ($praktik >= 70) $lulus_count++;
-if ($sikap >= 70) $lulus_count++;
+if ($teori >= 70)
+    $lulus_count++;
+if ($praktik >= 70)
+    $lulus_count++;
+if ($sikap >= 70)
+    $lulus_count++;
 
 
 //case
@@ -114,12 +116,12 @@ if ($lulus_count == 3) {
     } else {
         "LULUS";
     }
-}   else {
+} else {
     if ($lulus_count == 2) {
         echo "LULUS BERSYARAT";
-    }elseif ($lulus_count == 1) {
+    } elseif ($lulus_count == 1) {
         echo "PERLU UJIAN ULANG";
-    }else {
+    } else {
         echo "TIDAK LULUS<br> Perlu bimbingan khusus";
     }
 }
