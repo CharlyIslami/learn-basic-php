@@ -31,13 +31,13 @@ echo "<hr>";
 
 //soal ke 3
 echo "<h3>Cek Ganjil atau Genap</h3>";
-$angka = 7;
-if ($angka % 2 == 0) {
-    echo "Angka: $angka<br>";
-    echo "Jenis: Genap<br>";
-}else {
+$angka = 3;
+if ($angka % 2 != 0) {
     echo "Angka: $angka<br>";
     echo "Jenis: Ganjil<br>";
+}else {
+    echo "Angka: $angka<br>";
+    echo "Jenis: Genap<br>";
 }
 echo "<hr>";
 
@@ -62,7 +62,7 @@ echo "<hr>";
 
 //soal ke 5
 echo "<h3>Grade Nilai (A/B/C/D/E)</h3>";
-$nilai = -1;
+$nilai = 90;
 if ($nilai > 100) {
     echo "Nilai: $nilai<br>";
     echo "Nilai Tidak Valid<br>";
