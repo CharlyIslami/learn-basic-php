@@ -32,12 +32,12 @@ echo "<hr>";
 //soal ke 3
 echo "<h3>Cek Ganjil atau Genap</h3>";
 $angka = 3;
-if ($angka % 2 != 0) {
-    echo "Angka: $angka<br>";
-    echo "Jenis: Ganjil<br>";
-}else {
+if ($angka % 2 == 0) {
     echo "Angka: $angka<br>";
     echo "Jenis: Genap<br>";
+}else {
+    echo "Angka: $angka<br>";
+    echo "Jenis: Ganjil<br>";
 }
 echo "<hr>";
 
