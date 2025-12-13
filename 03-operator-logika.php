@@ -98,7 +98,7 @@ if ($umur < 18 && $punya_kartu_pelajar && $is_weekend) {
 echo "<br>";
 
 //contoh ke 2
-echo "Contoh ke 2: Akses VIP";
+echo "Contoh ke 2: Akses VIP<br>";
 $is_status = false;
 $is_donatur = true;
 $is_staff = false;
