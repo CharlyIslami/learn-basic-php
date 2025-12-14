@@ -135,13 +135,13 @@ echo "<hr>";
 //soal ke 4
 echo "<h3>Sistem Boarding Pesawat</h3>";
 $nama = "budi";
-$umur = 19;
-$punya_boarding_pass = true;
-$sudah_checkin = true;
+$umur = 11;
 $waktu_sekarang = 14;
 $waktu_boarding = 15;
+$punya_boarding_pass = true;
+$sudah_checkin = true;
 $punya_ktp_paspor = true; //untuk dewasa
-$ada_barang_berbahaya = true; //untuk dewasa/anak
+$ada_barang_berbahaya = false; //untuk dewasa/anak
 $didampingi_dewasa = true; //untuk anak/bayi
 $punya_surat_izin = true; //untuk anak tanpa pendamping
 echo "Nama: $nama<br>";
@@ -168,17 +168,17 @@ if ($waktu_sekarang > $waktu_boarding) {
         echo "Kamu tidak memiliki boarding pass<br>";
     }
     if (!$sudah_checkin) {
-        echo "Kamu belum checkin<br>";
+        echo "Kamu belum checkin tiket pesawat<br>";
     }
 } else {
-    if ($umur = 18) {
-        if (!$punya_ktp_paspor && !$ada_barang_berbahaya) {
+    if ($umur >= 18) {
+        if ($punya_ktp_paspor && !$ada_barang_berbahaya) {
             echo "Syarat: Memiliki Paspor, ktp, dan Tidak Memiliki Barang Berbahaya<br>";
             echo "<b>Boarding Diterima</b><br>";
         }else {
             echo "<b>Boarding ditolak</b><br>";
             echo "Alasan: <br>";
-            if ($punya_ktp_paspor) {
+            if (!$punya_ktp_paspor) {
                 echo "$nama Tidak Memiliki KTP ataupun PASPOR<br>";
             }
             if ($ada_barang_berbahaya) {
@@ -186,12 +186,32 @@ if ($waktu_sekarang > $waktu_boarding) {
             }
         }
     }
-    if ($umur >= 2 && < 18) {
-        if (($didampingi_dewasa || $punya_surat_izin) && $ada_barang_berbahaya) {
+    elseif ($umur >= 2 && $umur < 18) {
+        if (($didampingi_dewasa || $punya_surat_izin) && !$ada_barang_berbahaya) {
             echo "Syarat: Didampingi Orang Dewasa, Tidak Memiliki Barang Berbahaya, dan Memiliki Surat Izin<br>";
             echo "<b>Boarding Diterima</b>";
         }
+        else {
+            echo "<b>Boarding Ditolak</b><br>";
+            echo "Alasan: <br>";
+            if (!$didampingi_dewasa && !$punya_surat_izin) {
+                echo "$nama harus didampingi orang dewasa ATAU punya surat izin<br>";
+            }
+            if ($ada_barang_berbahaya) {
+                echo "$nama Memiliki Barang Berbahaya<br>";
+            }
+        }
 
+    }
+    else {
+        if ($didampingi_dewasa) {
+            echo "Syarat: Didampingi Orang Dewasa<br>";
+            echo "<b>Boarding Diterima<br>";
+        }else {
+            echo "<b>Boarding Ditolak</b><br>";
+            echo "Alasan: <br>";
+            echo "Tidak Didampingi Oleh Orang Dewasa<br>";
+        }
     }
 }
 ?>
