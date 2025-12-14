@@ -8,7 +8,7 @@ $username = "charly";
 $password = "pass123456";
 $umur = 20;
 $setuju_term = true;
-echo "Daftar Pendaftaran<br>";
+echo "DAFTAR PENDAFTARAN<br>";
 echo "Username: $username<br>";
 echo "Password: **********<br>";
 echo "Umur: $umur<br>";
@@ -144,6 +144,7 @@ $punya_ktp_paspor = true; //untuk dewasa
 $ada_barang_berbahaya = false; //untuk dewasa/anak
 $didampingi_dewasa = true; //untuk anak/bayi
 $punya_surat_izin = true; //untuk anak tanpa pendamping
+echo "SISTEM PERIZINAN PESAWAT<br>";
 echo "Nama: $nama<br>";
 echo "Umur: $umur<br>";
 
@@ -214,4 +215,38 @@ if ($waktu_sekarang > $waktu_boarding) {
         }
     }
 }
+echo "<hr>";
+
+//soal ke 5
+echo "<h3>Sistem Pinjaman Buku Perpustakaan</h3>";
+$nama = "Budi";
+$kategori_anggota = "mahasiswa";
+$punya_kartu = true;
+$ada_tunggakan = false;
+$jumlah_buku_dipinjam = 4;
+$kategori_buku = "Fiksi";
+$sudah_bayar_deposit = false;
+echo "SISTEM PEMINJAMAN BUKU<br>";
+echo "Nama: $nama<br>";
+echo "Kategori: $kategori_anggota<br>";
+
+if ($punya_kartu && !$ada_tunggakan && $jumlah_buku_dipinjam <= 3) {
+    echo "Kartu Anggota: " . ($punya_kartu ? "Aktif" : "Tidak Aktif") . "<br>";
+    echo "Tunggakan: " . ($ada_tunggakan ? "Ada" : "Tidak Ada") . "<br>";
+    echo "Buku Dipinjam: $jumlah_buku_dipinjam<br>";
+}
+ if (!$punya_kartu) {
+        echo "$nama Tidak Memiliki Kartu Anggota<br>";
+        echo "<b>Tidak Dapat meminjam Buku<br></b>";
+     }
+        if ($ada_tunggakan) {
+        echo "$nama Mempunyai Tunggakan<br>";
+        echo "<b>Tidak Dapat meminjam Buku<br></b>";
+     }
+        if ($jumlah_buku_dipinjam > 3) {
+        echo "Syarat Meminjam Buku Maksimal 3<br>";
+        echo "$nama Buku yang Kamu Pinjam adalah $jumlah_buku_dipinjam<br>";
+        echo "<b>Tidak Dapat meminjam Buku<br></b>";
+     }
+
 ?>
