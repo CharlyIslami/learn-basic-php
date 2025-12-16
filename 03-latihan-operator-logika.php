@@ -220,33 +220,71 @@ echo "<hr>";
 //soal ke 5
 echo "<h3>Sistem Pinjaman Buku Perpustakaan</h3>";
 $nama = "Budi";
-$kategori_anggota = "mahasiswa";
-$punya_kartu = true;
-$ada_tunggakan = false;
-$jumlah_buku_dipinjam = 4;
-$kategori_buku = "Fiksi";
-$sudah_bayar_deposit = false;
+$kategori_anggota = "Pelajar";
+$punya_kartu = true; //untuk semua
+$ada_tunggakan = false; //untuk semua
+$jumlah_buku_dipinjam = 3; //untuk semua
+$kategori_buku = "Fiksi"; //untuk pelajar
+$sudah_bayar_deposit = true; //untuk umum
 echo "SISTEM PEMINJAMAN BUKU<br>";
 echo "Nama: $nama<br>";
 echo "Kategori: $kategori_anggota<br>";
+echo "Kartu Anggota: " . ($punya_kartu ? "Aktif" : "Tidak Aktif") . "<br>";
+echo "Tunggakan: " . ($ada_tunggakan ? "Ada" : "Tidak Ada") . "<br>";
+echo "Buku Dipinjam: $jumlah_buku_dipinjam<br><br>";
 
 if ($punya_kartu && !$ada_tunggakan && $jumlah_buku_dipinjam <= 3) {
-    echo "Kartu Anggota: " . ($punya_kartu ? "Aktif" : "Tidak Aktif") . "<br>";
-    echo "Tunggakan: " . ($ada_tunggakan ? "Ada" : "Tidak Ada") . "<br>";
-    echo "Buku Dipinjam: $jumlah_buku_dipinjam<br>";
+    if ($kategori_anggota == "Mahasiswa") {
+        echo "<b>PEMINJAMAN DISETUJUI</b><br>";
+        echo "Kategori Anggota: $kategori_anggota<br>";
+        echo "Durasi Maksimal: 14 hari<br>";
+        echo "Selamat Membaca<br>";
+    }
+    elseif ($kategori_anggota == "Pelajar") {
+        if ($kategori_buku == "Dewasa") {
+            echo "<b>PEMINJAMAN DITOLAK</b><br>";
+            echo "Persyaratan: Kategori buku yang dipinjam bukan kategori dewasa<br>";
+            echo "Kategori Buku yang Dipinjam: $kategori_buku<br>";
+            echo "Kategori Anggota: $kategori_anggota<br>";
+            echo "Alasan:<br>";
+            echo "- Pelajar tidak boleh meminjam buku kategori dewasa<br>";
+        }else {
+            echo "<b>PEMINJAMAN DISETUJUI</b><br>";
+            echo "Persyaratan: Kategori buku yang dipinjam bukan kategori dewasa<br>";
+            echo "Kategori Buku yang Dipinjam: $kategori_buku<br>";
+            echo "Kategori: $kategori_anggota<br>";
+            echo "Durasi Maksimal: 7 hari<br>";
+            echo "Selamat Membaca<br>";
+        }
+    }elseif ($kategori_anggota == "Umum") {
+        if ($sudah_bayar_deposit) {
+            echo "<b>PEMINJAMAN DISETUJUI</b><br>";
+            echo "Persyaratan: Sudah membayar deposit sebanyak Rp 50.000<br>";
+            echo "Deposit: " . ($sudah_bayar_deposit ? "Sudah Bayar" : "Belum Bayar") . "<br>";
+            echo "Kategori: Umum<br>";
+            echo "Durasi Maksimal: 7 hari<br>";
+            echo "Selamat Membaca<br>";
+        }else {
+            echo "<b>PEMINJAMAN DITOLAK</b><br>";
+            echo "Persyaratan: Sudah membayar deposit sebanyak Rp 50.000<br>";
+            echo "Deposit: " . ($sudah_bayar_deposit ? "Sudah Bayar" : "Belum Bayar") . "<br>";
+            echo "Alasan: <br>";
+            echo "Ditolak! Bayar deposit Rp 50.000 dulu<br>";
+        }
+    }
+}else {
+    echo "<b>PEMINJAMAN DITOLAK</b><br>";
+    echo "Alasan:<br>";
+
+    if (!$punya_kartu) {
+        echo "- Tidak punya kartu anggota<br>";
+    }
+    if ($ada_tunggakan) {
+        echo "- Ada tunggakan denda<br>";
+    }
+    if ($jumlah_buku_dipinjam > 3) {
+        echo "- Batas maksimal peminjaman tercapai<br>";
+    }
 }
- if (!$punya_kartu) {
-        echo "$nama Tidak Memiliki Kartu Anggota<br>";
-        echo "<b>Tidak Dapat meminjam Buku<br></b>";
-     }
-        if ($ada_tunggakan) {
-        echo "$nama Mempunyai Tunggakan<br>";
-        echo "<b>Tidak Dapat meminjam Buku<br></b>";
-     }
-        if ($jumlah_buku_dipinjam > 3) {
-        echo "Syarat Meminjam Buku Maksimal 3<br>";
-        echo "$nama Buku yang Kamu Pinjam adalah $jumlah_buku_dipinjam<br>";
-        echo "<b>Tidak Dapat meminjam Buku<br></b>";
-     }
 
 ?>
