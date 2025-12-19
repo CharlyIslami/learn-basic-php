@@ -286,5 +286,49 @@ if ($punya_kartu && !$ada_tunggakan && $jumlah_buku_dipinjam <= 3) {
         echo "- Batas maksimal peminjaman tercapai<br>";
     }
 }
+echo "<hr>";
 
+//soal ke 6
+echo "<h3>Sistem Penerimaan Mahasiswa Baru</h3>";
+$nama = "Budi";
+$nilai_rapor = 85;
+$punya_sertifikat_prestasi = true;
+$nilai_utbk = 620;
+$adalah_atlet = false;
+$nilai_wawancara = 70;
+$sanggup_bayar_uang_pangkal = 500;
+echo "SISTEM PENERIMAAN MABA<br>";
+echo "Nama: Budi<br>";
+echo "Nilai Rapor: $nilai_rapor<br>";
+echo "Nilai UTBK: $nilai_utbk<br>";
+echo "Sertifikat Prestasi: " . ($punya_sertifikat_prestasi ? "Ada" : "Tidak Ada") . "<br>";
+echo "Atlet: " . ($adalah_atlet ? "Ya" : "Tidak") . "<br>";
+echo "Nilai Wawancara: $nilai_wawancara<br><br>";
+
+if (($nilai_rapor >= 85 && $punya_sertifikat_prestasi && $nilai_utbk >= 600) || ($adalah_atlet && $nilai_rapor >= 75)) {
+    echo "SELAMAT ANDA DITERIMA<br>";
+    echo "Jalur: <b>PRESTASI</b><br>";
+    echo "Benefit: <br>";
+    echo "- Tanpa tes tambahan<br>";
+    echo "- Bebas biaya pendaftaran<br>";
+}elseif ($nilai_rapor >= 70 && $nilai_utbk >= 500 && $nilai_wawancara >= 75 && $sanggup_bayar_uang_pangkal >= 500000) {
+    echo "SELAMAT ANDA DITERIMA<br>";
+    echo "Jalur: <b>REGULER</b><br>";
+    echo "Biaya Pendaftaran: Rp 500.000<br>";
+}elseif ($nilai_rapor >= 60 && $sanggup_bayar_uang_pangkal == 50000000) {
+    echo "SELAMA ANDA DITERIMA<br>";
+    echo "Jalur: <b>MANDIRI</b><br>";
+    echo "Biaya: <br>";
+    echo "- Uang pangkal: Rp" . number_format($sanggup_bayar_uang_pangkal) . "<br>";
+    echo "- Total: Rp" . number_format($sanggup_bayar_uang_pangkal) . "<br>";
+}else {
+    echo "MAAF ANDA TIDAK DITERIMA<br>";
+    echo "Alasan: ";
+
+    if ($nilai_rapor < 85) {
+        echo "Nilai Anda Tidak Mencukupi<br>";
+        echo "Nilai";
+    }
+    
+}
 ?>
