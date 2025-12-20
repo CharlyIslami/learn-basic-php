@@ -292,11 +292,12 @@ echo "<hr>";
 echo "<h3>Sistem Penerimaan Mahasiswa Baru</h3>";
 $nama = "Budi";
 $nilai_rapor = 85;
-$punya_sertifikat_prestasi = true;
+$punya_sertifikat_prestasi = false;
 $nilai_utbk = 620;
 $adalah_atlet = false;
-$nilai_wawancara = 70;
-$sanggup_bayar_uang_pangkal = 500;
+$nilai_wawancara = 75;
+$sanggup_bayar_reguler = false;
+$sanggup_bayar_mandiri = false;
 echo "SISTEM PENERIMAAN MABA<br>";
 echo "Nama: Budi<br>";
 echo "Nilai Rapor: $nilai_rapor<br>";
@@ -311,24 +312,35 @@ if (($nilai_rapor >= 85 && $punya_sertifikat_prestasi && $nilai_utbk >= 600) || 
     echo "Benefit: <br>";
     echo "- Tanpa tes tambahan<br>";
     echo "- Bebas biaya pendaftaran<br>";
-}elseif ($nilai_rapor >= 70 && $nilai_utbk >= 500 && $nilai_wawancara >= 75 && $sanggup_bayar_uang_pangkal >= 500000) {
+}elseif ($nilai_rapor >= 70 && $nilai_utbk >= 500 && $nilai_wawancara >= 75 && $sanggup_bayar_reguler) {
     echo "SELAMAT ANDA DITERIMA<br>";
     echo "Jalur: <b>REGULER</b><br>";
     echo "Biaya Pendaftaran: Rp 500.000<br>";
-}elseif ($nilai_rapor >= 60 && $sanggup_bayar_uang_pangkal == 50000000) {
-    echo "SELAMA ANDA DITERIMA<br>";
+}elseif ($nilai_rapor >= 60 && $sanggup_bayar_mandiri) {
+    echo "SELAMAT ANDA DITERIMA<br>";
     echo "Jalur: <b>MANDIRI</b><br>";
-    echo "Biaya: <br>";
-    echo "- Uang pangkal: Rp" . number_format($sanggup_bayar_uang_pangkal) . "<br>";
-    echo "- Total: Rp" . number_format($sanggup_bayar_uang_pangkal) . "<br>";
+    echo "Biaya Pendaftaran: Rp 50.000.000<br>";
 }else {
     echo "MAAF ANDA TIDAK DITERIMA<br>";
-    echo "Alasan: ";
+    echo "Alasan: <br>";
 
-    if ($nilai_rapor < 85) {
-        echo "Nilai Anda Tidak Mencukupi<br>";
-        echo "Nilai";
+    if ($nilai_rapor < 60) {
+        echo "- Nilai rapor anda: $nilai_rapor (minimal: 60)<br>";
     }
-    
+    if ($nilai_utbk < 500) {
+        echo "- Nilai UTBK anda: $nilai_utbk (minimal: 500)<br>";
+    }
+    if ($nilai_wawancara < 75) {
+        echo "- Nilai wawancara anda: $nilai_wawancara (minimal: 75)<br>";
+    }
+    if (!$punya_sertifikat_prestasi) {
+        echo "- Anda tidak memiliki sertifikat prestasi<br>";
+    }
+    if (!$sanggup_bayar_reguler) {
+        echo "- Anda tidak sanggup membayar biaya jalur reguler (Rp 500.000)<br>";
+    } 
+    if (!$sanggup_bayar_mandiri) {
+        echo "- Anda tidak sanggup membayar biaya jalur mandiri (Rp 50.000.000)<br>";
+    }
 }
 ?>
