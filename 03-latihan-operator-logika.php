@@ -343,4 +343,144 @@ if (($nilai_rapor >= 85 && $punya_sertifikat_prestasi && $nilai_utbk >= 600) || 
         echo "- Anda tidak sanggup membayar biaya jalur mandiri (Rp 50.000.000)<br>";
     }
 }
+echo "<hr>";
+
+//soal ke 7
+echo "<h3>Sistem Eligibilitas Donor Darah</h3><br>";
+$nama = "Budi";
+$jenis_kelamin = "Pria";
+$usia = 25;
+$berat_badan = 55;
+$tekanan_darah_systolic =  120;
+$tekanan_darah_diastolic =  80;
+$hemoglobin = 13.5;
+$sedang_sakit = false;
+$sedang_konsumsi_antibiotik = false;
+$pernah_operasi_besar = false;
+$pernah_transfusi_darah = false;
+$sedang_hamil = false;
+$punya_penyakit_kronis = false;
+$donor_terakhir_lalu = 90;
+$kondisi_darurat = false;
+echo "SISTEM ELIGIBILITAS DONOR DARAH<br>";
+echo "Nama: $nama<br>";
+echo "Jenis Kelamin: $jenis_kelamin<br>";
+echo "Usia: $usia<br>";
+echo "Berat Badan: $berat_badan<br>";
+echo "Tekanan Darah Systolic: $tekanan_darah_systolic<br>";
+echo "Tekanan Darah Diastolic: $tekanan_darah_diastolic<br>";
+echo "Hemoglobin: $hemoglobin<br>";
+echo "Sedang Sakit: " . ($sedang_sakit ? "Iya" : "Tidak Sakit") . "<br>";
+echo "Sedang Konsumsi Antibiotik: " . ($sedang_konsumsi_antibiotik ? "Iya" : "Tidak") . "<br>";
+echo "Pernah Operasi Besar: " . ($pernah_operasi_besar ? "Iya" : "Tidak") . "<br>";
+echo "Pernah Transfusi Darah: " . ($pernah_transfusi_darah ? "Pernah" : "Tidak Pernah") . "<br>";
+echo "Sedang Hamil Tidak: " . ($sedang_hamil ? "Iya" : "Tidak") . "<br>";
+echo "Punya Penyakit Kronis: " . ($punya_penyakit_kronis ? "Punya" : "Tidak Punya") . "<br>";
+echo "Terakhir Donor: $donor_terakhir_lalu hari lalu<br>";
+echo "Kondisi Darurat: " . ($kondisi_darurat ? "Iya" : "Tidak") . "<br><br>";
+
+if ($usia >= 17 &&
+    $usia <= 60 &&
+    $berat_badan >= 45 &&
+    $tekanan_darah_systolic >= 90 &&
+    $tekanan_darah_systolic <= 140 &&
+    $tekanan_darah_diastolic >= 60 &&
+    $tekanan_darah_diastolic <= 90 &&
+    (($jenis_kelamin == "Pria" && $hemoglobin >= 12.5) || ($jenis_kelamin == "Wanita" && $hemoglobin >= 12.0 && !$sedang_hamil)) &&
+    !$sedang_sakit &&
+    !$sedang_konsumsi_antibiotik &&
+    !$punya_penyakit_kronis &&
+    $donor_terakhir_lalu >= 60) {
+        echo "HASIL SCREENING DONOR DARAH<br>";
+        echo "Nama: $nama<br>";
+        echo "Status: <b>ELIGIBLE</b><br>";
+        echo "Jalur: <b>DONOR REGULER</b><br><br>";
+        echo "Donor Terakhir: $donor_terakhir_lalu hari yang lalu<br>";
+        echo "Donor berikutnya: <b>Sudah dapat donor sekarang!</b><br>";
+        echo "--- Catatan Penting ---<br>";
+        echo "• Pastikan istirahat cukup sebelum donor<br>";
+        echo "• Makan dan minum yang cukup sebelum donor<br>";
+        echo "• Bawa KTP/identitas saat donor<br>";
+    }elseif ($kondisi_darurat &&
+    $usia >= 17 &&
+    $usia <= 65 &&
+    $berat_badan >= 50 &&
+    $tekanan_darah_systolic >= 85 &&
+    $tekanan_darah_systolic <= 150 &&
+    $tekanan_darah_diastolic >= 55 &&
+    $tekanan_darah_diastolic <= 95 &&
+    (($jenis_kelamin == "Pria" && $hemoglobin >= 13.0) || ($jenis_kelamin == "Wanita" && $hemoglobin >= 12.5 && !$sedang_hamil)) &&
+    !$sedang_sakit &&
+    !$punya_penyakit_kronis &&
+    $donor_terakhir_lalu >= 30) {
+         echo "HASIL SCREENING DONOR DARAH<br>";
+    echo "Nama: $nama<br>";
+    echo "Status: <b>ELIGIBLE</b><br>";
+    echo "Jalur: <b>DONOR DARURAT</b><br>";  
+    echo "<i>Kondisi darurat aktif</i><br><br>";  
+    
+    echo "Donor Terakhir: $donor_terakhir_lalu hari yang lalu<br>";
+    echo "Donor berikutnya: <b>Sudah dapat donor sekarang!</b><br>";
+    
+    echo "--- Catatan Penting ---<br>";
+    echo "• Pastikan istirahat cukup sebelum donor<br>";
+    echo "• Makan dan minum yang cukup sebelum donor<br>";
+    echo "• Bawa KTP/identitas saat donor<br>";
+    echo "• <b>Jalur darurat: Persyaratan khusus berlaku</b><br>";
+    }else {
+        echo "DONOR DARAH TIDAK DITERIMA<br>";
+        echo "Alasan: <br";
+
+        if ($usia < 17) {
+            echo "- Usia Anda: $usia tahun (minimal 17 tahun)<br>";
+        }
+        if ($usia >= 60 && $usia <= 65) {
+            echo "- Usia Anda: $usia tahun (hanya bisa jalur darurat, tapi kondisi darurat tidak aktif)<br>";
+        }
+        if ($usia > 65) {
+            echo "- Usia Anda: $usia tahun (maksimal 65 tahun untuk jalur darurat)<br>";
+        }
+        if ($berat_badan < 45) {
+            echo "- Berat badan Anda: $berat_badan kg (minimal 45 kg untuk jalur reguler)<br>";
+        }
+        if ($berat_badan >= 45 && $berat_badan < 50 && $kondisi_darurat) {
+            echo "- Berat badan Anda: $berat_badan kg (minimal 50 kg untuk jalur darurat)<br>";
+        }
+        if ($tekanan_darah_systolic < 85) {
+            echo "- Tekanan darah systolic Anda: $tekanan_darah_systolic mmHg (terlalu rendah, minimal 85 mmHg)<br>";
+        }
+        if ($tekanan_darah_systolic > 150) {
+            echo "- Tekanan darah systolic Anda: $tekanan_darah_systolic mmHg (terlalu tinggi, maksimal 150 mmHg)<br>";
+        }
+        if ($tekanan_darah_diastolic < 55) {
+            echo "- Tekanan darah diastolic Anda: $tekanan_darah_diastolic mmHg (terlalu rendah, minimal 55 mmHg)<br>";
+        }
+        if ($tekanan_darah_diastolic > 95) {
+            echo "- Tekanan darah diastolic Anda: $tekanan_darah_diastolic mmHg (terlalu tinggi, maksimal 95 mmHg)<br>";
+        }
+        if ($jenis_kelamin == "Pria" && $hemoglobin < 12.5) {
+            echo "- Hemoglobin Anda: $hemoglobin g/dL (minimal 12.5 g/dL untuk pria)<br>";
+        }
+        if ($jenis_kelamin == "Wanita" && $hemoglobin < 12.0) {
+            echo "- Hemoglobin Anda: $hemoglobin g/dL (minimal 12.0 g/dL untuk wanita)<br>";
+        }
+        if ($sedang_hamil) {
+            echo "- Anda sedang hamil<br>";
+        }
+        if ($sedang_sakit) {
+            echo "- Anda sedang sakit<br>";
+        }
+        if ($sedang_konsumsi_antibiotik) {
+            echo "- Anda baru baru ini mengonsumsi antibiotik<br>";
+        }
+        if ($punya_penyakit_kronis) {
+            echo "- Anda memiliki penyakit kronis<br>";
+        }
+        if ($donor_terakhir_lalu < 30) {
+            echo "- Donor terakhir: $donor_terakhir_lalu hari yang lalu (minimal 30 hari untuk jalur darurat)<br>";
+        } 
+        if ($donor_terakhir_lalu < 60) {
+            echo "- Donor terakhir: $donor_terakhir_lalu hari yang lalu (minimal 60 hari untuk jalur reguler, atau tunggu kondisi darurat)<br>";
+        }
+    }
 ?>
