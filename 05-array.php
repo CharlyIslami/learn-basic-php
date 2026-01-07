@@ -21,9 +21,19 @@ $teman = [
 foreach ($teman as $siswa) {
     echo "Nama: " . $siswa["nama"] . "<br>";
     echo "Kelas: " . $siswa["kelas"] . "<br>";
-    echo "Jurusan: " . $siswa ["jurusan"] . "<br>";
+    echo "Jurusan: " . $siswa["jurusan"] . "<br>";
     echo "---<br>";
 }
 
+$task = [];
 
+$task[] = "Belajar PHP";
+$task[] = "Commit Github";
+$task[] = "Berenang";
+
+echo "Total task " . count($task) . "<br><br>";
+
+foreach ($task as $index => $task) {
+    echo ($index + 1) . ". $task<br>";
+}
 ?>
