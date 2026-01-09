@@ -25,7 +25,7 @@ foreach ($teman as $siswa) {
     echo "---<br>";
 }
 
-$task = [];
+$task = ["Belajar Coding"];
 
 $task[] = "Belajar PHP";
 $task[] = "Commit Github";
