@@ -94,7 +94,7 @@ $nilai_total = ($teori + $praktik + $sikap) / 3;
 //Variabel tambahan
 $lulus_count = 0;
 
-if ($teori >= 70)
+if ($teori >= 70) 
     $lulus_count++;
 if ($praktik >= 70)
     $lulus_count++;

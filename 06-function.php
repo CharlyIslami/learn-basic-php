@@ -13,6 +13,14 @@ sapaan("Haikal");
 echo "<br><br>";
 
 //function 2
+function sayHello($name = "Frontal") {
+    echo "Hello $name";
+}
+sayhello();
+echo"<br><br>";
+
+
+//function 3
 function tambah($a, $b) {
     return $a + $b;
 }
@@ -32,7 +40,7 @@ echo "15 * 3 = " . kali(15, 3) . "<br>";
 echo "15 / 3 = " . bagi(15, 3) . "<br>";
 echo"<br><br>";
 
-//function 3
+//function 4
 function getGrade($nilai) {
     if ($nilai >= 90) {
         return "A";
@@ -60,7 +68,7 @@ foreach ($siswa as $s){
 }
 echo "<br><br>";
 
-//function 4
+//function 5
 function validateusername($username) {
     if (empty($username)) {
         return "Silahkan isi username";
@@ -83,5 +91,27 @@ echo "Test 1: $test1<br>";
 echo "Test 2: $test2<br>";
 echo "Test 3: $test3<br>";
 echo "Test 4: $test4<br>";
+echo "<br><br>";
 
+//function 6
+function sum(int $first, int $last) {
+    $total = $first + $last;
+    echo "Total $first + $last = $total<br>";
+}
+
+sum("100", "100");
+sum(100, 100);
+sum(true, false);
+echo "<br><br>";
+
+//function 7
+function sumAll(...$values) {
+    $total = 0;
+    foreach ($values as $value) {
+        $total += $value;
+    }
+    echo "Total " . implode(",", $values) . " = $total";
+}
+
+sumAll(1, 2, 3, 4, 5);
 ?>
