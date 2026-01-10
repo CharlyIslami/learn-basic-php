@@ -56,6 +56,9 @@ function getGrade($nilai) {
 
 }
 
+$score = getGrade(93);
+
+
 $siswa = [
     ["nama" => "Charly", "nilai" => 85],
     ["nama" => "Alex", "nilai" => 92],
