@@ -1,4 +1,5 @@
 <?php
+session_start();
 $profil = [
     "nama" => "Charly Islami",
     "umur" => 16,

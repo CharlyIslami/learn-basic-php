@@ -1,18 +1,23 @@
 <?php
+session_start();
 $message = "";
 $messageType = "";
 
 if (isset($_POST["login"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
-
+    
     if (empty($username) || empty($password)) {
         $message = "Username dan password wajib diisi!";
         $messageType = "error";
     }
     elseif ($username == "charly" && $password == "12345") {
-        $message = "Login berhasil! Selamat datang, $username";
-        $messageType = "succsess";
+        $_SESSION["logged_in"] = true;
+        $_SESSION["username"] = $username;
+        $_SESSION["role"] = "Admin";
+
+        header("Location: 07-dashboard.php");
+        exit();
     }
     else {
         $message = "Username atau password salah!";
@@ -74,11 +79,11 @@ if (isset($_POST["login"])) {
 </head>
 <body>
     <h2>Form Login</h2>
-    <?php if (!empty($message)): ?>
-        <div class="message <?php echo $messageType; ?>">
-            <?php echo $message; ?>
-        </div>
-    <?php endif; ?>
+        <?php if (!empty($message)): ?>
+            <div class="message <?php echo $messageType; ?>">
+                <?php echo $message; ?>
+            </div>
+        <?php endif; ?>
 
     <form action="" method="POST">
         <label for="username">Username:</label>
