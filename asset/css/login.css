@@ -1,0 +1,39 @@
+body {
+    background: linear-gradient(180deg, #ffffff 0%, #eef6ff 100%);
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.header {
+    background: rgb(97, 97, 213);
+    color: white;
+    text-align: center;
+    padding: 20px 30px;
+    border-radius: 20px;
+    line-height: 15px;
+    margin-bottom: 50px;
+}
+
+.header h2 {
+    font-size: 2.3rem;
+}
+
+.container {
+    width: 300px;
+    background-color: #f0f7ff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    padding: 7px;
+    border-radius: 10px;
+    border-color: rgb(49, 49, 201);
+    outline: none;
+    box-sizing: border-box;
+}
+

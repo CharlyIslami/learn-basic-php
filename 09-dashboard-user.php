@@ -5,8 +5,8 @@ if (!isset($_SESSION["logged_in"])) {
     exit();
 }
 
-if ($_SESSION["role"] != "admin") {
-    echo "<h2>Acces Denied</h2>";
+if ($_SESSION["role"] != "user") {
+    echo "<h2>Access Denied</h2>";
     exit();
 }
 
@@ -15,13 +15,12 @@ $role = $_SESSION["role"];
 $login_time = $_SESSION["login_time"];
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Admin</title>
+    <title>Document</title>
 </head>
 <body>
     <h2>Dashboard <?php echo ucfirst($role); ?></h2>
@@ -29,24 +28,17 @@ $login_time = $_SESSION["login_time"];
     <div class="header">
     <p>Selamat datang, <?php echo $username; ?></p>
     <p>Role: <?php echo ucfirst($role); ?></p>
-    <p>Login Time: <?php echo $login_time; ?></p>
+    <p>Login TIme: <?php echo $login_time; ?></p>
     </div>
-
-    <div class="statistik">
-        <h3>Statistik</h3>
-        <p>Total User: 2</p>
-    </div>
-
-    <a href="09-admin-panel.php" class="btn">
-        <button>Manage Users</button>
-    </a>
 
     <a href="09-profile.php" class="btn">
         <button>View Profile</button>
     </a>
-
+    
     <a href="08-logout.php" class="logout">
         <button>Logout</button>
     </a>
+
+
 </body>
 </html>

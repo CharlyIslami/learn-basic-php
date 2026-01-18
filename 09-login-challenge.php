@@ -12,7 +12,7 @@ if (isset($_POST["login"])) {
         $message = "Username dan Password wajib diisi!";
         $messageType = "error";
     }
-    elseif ($username == "CharlyAdmin" && $password == "admin123") {
+    elseif ($username == "Admin" && $password == "admin123") {
         $_SESSION["logged_in"] = true;
         $_SESSION["username"] = $username;
         $_SESSION["role"] = "admin";
@@ -21,7 +21,7 @@ if (isset($_POST["login"])) {
         header("Location: 09-dashboard-admin.php");
         exit();
     }
-    elseif ($username == "CharlyUser" && $password == "user123") {
+    elseif ($username == "User" && $password == "user123") {
         $_SESSION["logged_in"] = true;
         $_SESSION["username"] = $username;
         $_SESSION["role"] = "user";
@@ -43,11 +43,14 @@ if (isset($_POST["login"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Challenge</title>
+    <link rel="stylesheet" href="asset/css/login.css">
 </head>
 <body>
+    <div class="header">
     <h2>Form</h2>
     <p>Form Login</p>
     <p>Role terdiri dari Admin, User.</p>
+    </div>
 
     <?php if (!empty($message)): ?>
         <div class="message <?php echo $messageType; ?>">
@@ -55,7 +58,8 @@ if (isset($_POST["login"])) {
         </div>
     <?php endif?>
     
-    <form method="POST" action="">
+    <div class="container">
+        <form method="POST" action="">
         <label for="username">Username:</label>
         <input type="text" name="username" placeholder="Silahkan masukkan username...">
 
@@ -64,5 +68,6 @@ if (isset($_POST["login"])) {
 
         <button type="submit" name="login">Login</button>
     </form>
+    </div>
 </body>
 </html>
